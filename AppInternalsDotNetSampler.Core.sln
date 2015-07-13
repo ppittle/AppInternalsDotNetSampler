@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppInternalsDotNetSampler.Core", "AppInternalsDotNetSampler.Core\AppInternalsDotNetSampler.Core.csproj", "{54A840E9-B398-44FB-8150-EBF1A1186D97}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppInternalsDotNetSampler.TcpServer", "AppInternalsDotNetSampler.TcpServer\AppInternalsDotNetSampler.TcpServer.csproj", "{05475B02-94B5-418A-A714-14689760D611}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{54A840E9-B398-44FB-8150-EBF1A1186D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54A840E9-B398-44FB-8150-EBF1A1186D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54A840E9-B398-44FB-8150-EBF1A1186D97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05475B02-94B5-418A-A714-14689760D611}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05475B02-94B5-418A-A714-14689760D611}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05475B02-94B5-418A-A714-14689760D611}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05475B02-94B5-418A-A714-14689760D611}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
