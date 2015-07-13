@@ -191,7 +191,7 @@ namespace AppInternalsDotNetSampler.Console
             System.Console.WriteLine();
 
             //Confirm Method Execution
-            System.Console.WriteLine("Confirm Execute Method " + method.MethodName + " {[y]|n}");
+            System.Console.Write("Confirm Execute Method " + method.MethodName + " {[y]|n}: ");
             var executeChoice = System.Console.ReadLine();
 
             if (!string.IsNullOrEmpty(executeChoice) ||
