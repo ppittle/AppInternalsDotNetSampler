@@ -17,8 +17,9 @@ namespace AppInternalsDotNetSampler.Core
             _logger = logger;
 
             _logger.WriteLine(string.Format(
-                "Starting Tcp Listener on [{0}:{1}]",
+                "Creating Tcp Listener on [{0}:{1}]",
                 address, port));
+            _logger.WriteLine("You may need to create a firewall rule before clients can connect.");
 
             _tcpListener = new TcpListener(address, port);
         }
