@@ -1,7 +1,10 @@
 ﻿using System;
-using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
+using System.Threading;
 using AppInternalsDotNetSampler.Core.Logging;
 
 namespace AppInternalsDotNetSampler.Core
@@ -12,9 +15,12 @@ namespace AppInternalsDotNetSampler.Core
 
         private readonly TcpListener _tcpListener;
 
-        public EchoTcpServer(ITcpServerLogger logger, IPAddress address, int port)
+        private readonly int _simulatedPacketDelayInMilliseconds;
+
+        public EchoTcpServer(ITcpServerLogger logger, IPAddress address, int port, int simulatedPacketDelayInMilliseconds)
         {
             _logger = logger;
+            _simulatedPacketDelayInMilliseconds = simulatedPacketDelayInMilliseconds;
 
             _logger.WriteLine(string.Format(
                 "Creating Tcp Listener on [{0}:{1}]",
@@ -44,18 +50,36 @@ namespace AppInternalsDotNetSampler.Core
 
                     using (var stream = client.GetStream())
                     {
-                        string data;
-                        using (var sr = new StreamReader(stream))
-                        {
-                            data = sr.ReadToEnd();
+                        var allData = new List<byte>();
+                        var receiveBuffer = new byte[1024];
 
-                            _logger.WriteLine("Received: " + data);
+                        while (true)
+                        {
+                            var chunkLength = stream.Read(receiveBuffer, 0, receiveBuffer.Length);
+
+                            if (chunkLength < receiveBuffer.Length)
+                            {
+                                //end of message
+                                allData.AddRange(receiveBuffer.Take(chunkLength));
+                                break;
+                            }
+
+                            allData.AddRange(receiveBuffer);
+
+                            if (_simulatedPacketDelayInMilliseconds > 0)
+                                Thread.Sleep(_simulatedPacketDelayInMilliseconds);
                         }
 
-                        using (var sw = new StreamWriter(stream))
-                        {
-                            sw.Write("Echo: " + data);
-                        }
+                        var data = Encoding.UTF8.GetString(allData.ToArray(), 0, allData.Count);
+
+                        _logger.WriteLine("Received: " + data);
+
+                        var responseBuffer =
+                            Encoding.UTF8.GetBytes("Echo: " + data);
+                        
+                        stream.Write(responseBuffer,0,responseBuffer.Length);
+
+                        stream.Flush();
                     }
 
                     client.Close();

@@ -32,7 +32,7 @@ namespace AppInternalsDotNetSampler.TcpServer
 
             Console.WriteLine("Usage: " +
                 System.AppDomain.CurrentDomain.FriendlyName + 
-                " [ip address] [port]");
+                " [ip address] [port] [simulated packet delay in milliseconds]");
             Console.WriteLine();
             #endregion
 
@@ -42,12 +42,16 @@ namespace AppInternalsDotNetSampler.TcpServer
             var port = ParseCommandArgument<int>(
                 args, 1, "Port", 8080, s => int.Parse(s));
 
+            var simulatedPacketDelayInMilliseconds = ParseCommandArgument<int>(
+                args, 2, "Simulated Packet Delay In Milliseconds", 0, s => int.Parse(s));
+
             Console.WriteLine();
             Console.WriteLine();
 
             try
             {
-                using (var server = new EchoTcpServer(new TcpServerLogger(), address, port))
+                using (var server = new EchoTcpServer(
+                    new TcpServerLogger(), address, port, simulatedPacketDelayInMilliseconds))
                 {
                     Console.WriteLine("");
                     Console.WriteLine("Starting TCP Server");
