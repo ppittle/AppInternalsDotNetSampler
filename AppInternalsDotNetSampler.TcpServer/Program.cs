@@ -15,7 +15,7 @@ namespace AppInternalsDotNetSampler.TcpServer
             #region Write Preamble
             Console.WriteLine("");
             Console.WriteLine("********************************************************");
-            Console.WriteLine("*     WELCOME TO THE APP INTERNALS DOT NOT SAMPLER     *");
+            Console.WriteLine("*       WELCOME TO THE APP INTERNALS .NET SAMPLER      *");
             Console.WriteLine("*                   TCP SERVER                         *");
             Console.WriteLine("*                                                      *");
             Console.WriteLine("* Source Code Available At:                            *");

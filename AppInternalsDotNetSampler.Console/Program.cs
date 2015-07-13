@@ -15,8 +15,8 @@ namespace AppInternalsDotNetSampler.Console
             #region Write Preamble
             System.Console.WriteLine("");
             System.Console.WriteLine("********************************************************");
-            System.Console.WriteLine("*     WELCOME TO THE APP INTERNALS DOT NOT SAMPLER     *");
-            System.Console.WriteLine("*              CONSOLE APPLICATION                     *");
+            System.Console.WriteLine("*       WELCOME TO THE APP INTERNALS .NET SAMPLER      *");
+            System.Console.WriteLine("*                 CONSOLE APPLICATION                  *");
             System.Console.WriteLine("*                                                      *");
             System.Console.WriteLine("* Source Code Available At:                            *");
             System.Console.WriteLine("* https://github.com/ppittle/AppInternalsDotNetSampler *");
