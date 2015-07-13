@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Console\HeaderPrinter.cs" />
     <Compile Include="SamplerMethods\CPU\SumArray.cs" />
     <Compile Include="SamplerMethods\CPU\SumArrayMultiThreaded.cs" />
     <Compile Include="SamplerMethods\DiskIO\TempFileCreator.cs" />

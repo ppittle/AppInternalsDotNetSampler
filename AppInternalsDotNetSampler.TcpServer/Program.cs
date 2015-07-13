@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using AppInternalsDotNetSampler.Core;
+using AppInternalsDotNetSampler.Core.Console;
 
 namespace AppInternalsDotNetSampler.TcpServer
 {
@@ -14,15 +11,15 @@ namespace AppInternalsDotNetSampler.TcpServer
         {
             #region Write Preamble
             Console.WriteLine("");
-            Console.WriteLine("********************************************************");
-            Console.WriteLine("*       WELCOME TO THE APP INTERNALS .NET SAMPLER      *");
-            Console.WriteLine("*                   TCP SERVER                         *");
-            Console.WriteLine("*                                                      *");
-            Console.WriteLine("* Source Code Available At:                            *");
-            Console.WriteLine("* https://github.com/ppittle/AppInternalsDotNetSampler *");
-            Console.WriteLine("*                                                      *");
-            Console.WriteLine("* -- Philip Pittle philip.pittle@gmail.com             *");
-            Console.WriteLine("********************************************************");
+            Console.WriteLine(HeaderPrinter.Stars);
+            Console.WriteLine(HeaderPrinter.HeaderPrint("WELCOME TO THE APP INTERNALS .NET SAMPLER", HeaderPrinter.Style.CenterCaps));
+            Console.WriteLine(HeaderPrinter.HeaderPrint("TCP SERVER", HeaderPrinter.Style.CenterCaps));
+            Console.WriteLine(HeaderPrinter.HeaderPrint("", HeaderPrinter.Style.Left));
+            Console.WriteLine(HeaderPrinter.HeaderPrint(" Source Code Available At:", HeaderPrinter.Style.Left));
+            Console.WriteLine(HeaderPrinter.HeaderPrint(" https://github.com/ppittle/AppInternalsDotNetSampler", HeaderPrinter.Style.Left));
+            Console.WriteLine(HeaderPrinter.HeaderPrint("", HeaderPrinter.Style.Left));
+            System.Console.WriteLine(HeaderPrinter.HeaderPrint(" -- Philip Pittle philip.pittle@gmail.com", HeaderPrinter.Style.Left));
+            Console.WriteLine(HeaderPrinter.Stars);
 
             Console.WriteLine();
             Console.WriteLine();
@@ -31,7 +28,7 @@ namespace AppInternalsDotNetSampler.TcpServer
             #region Write Usage
 
             Console.WriteLine("Usage: " +
-                System.AppDomain.CurrentDomain.FriendlyName + 
+                AppDomain.CurrentDomain.FriendlyName + 
                 " [ip address] [port] [simulated packet delay in milliseconds]");
             Console.WriteLine();
             #endregion

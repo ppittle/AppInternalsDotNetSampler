@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using AppInternalsDotNetSampler.Core;
+using AppInternalsDotNetSampler.Core.Console;
 using AppInternalsDotNetSampler.Core.Discoverability;
 
 namespace AppInternalsDotNetSampler.Console
@@ -14,15 +15,15 @@ namespace AppInternalsDotNetSampler.Console
         {
             #region Write Preamble
             System.Console.WriteLine("");
-            System.Console.WriteLine("********************************************************");
-            System.Console.WriteLine("*       WELCOME TO THE APP INTERNALS .NET SAMPLER      *");
-            System.Console.WriteLine("*                 CONSOLE APPLICATION                  *");
-            System.Console.WriteLine("*                                                      *");
-            System.Console.WriteLine("* Source Code Available At:                            *");
-            System.Console.WriteLine("* https://github.com/ppittle/AppInternalsDotNetSampler *");
-            System.Console.WriteLine("*                                                      *");
-            System.Console.WriteLine("* -- Philip Pittle philip.pittle@gmail.com             *");
-            System.Console.WriteLine("********************************************************");
+            System.Console.WriteLine(HeaderPrinter.Stars);
+            System.Console.WriteLine(HeaderPrinter.HeaderPrint("WELCOME TO THE APP INTERNALS .NET SAMPLER", HeaderPrinter.Style.CenterCaps));
+            System.Console.WriteLine(HeaderPrinter.HeaderPrint("CONSOLE APPLICATION", HeaderPrinter.Style.CenterCaps));
+            System.Console.WriteLine(HeaderPrinter.HeaderPrint("", HeaderPrinter.Style.Left));
+            System.Console.WriteLine(HeaderPrinter.HeaderPrint(" Source Code Available At:", HeaderPrinter.Style.Left));
+            System.Console.WriteLine(HeaderPrinter.HeaderPrint(" https://github.com/ppittle/AppInternalsDotNetSampler", HeaderPrinter.Style.Left));
+            System.Console.WriteLine(HeaderPrinter.HeaderPrint("", HeaderPrinter.Style.Left));
+            System.Console.WriteLine(HeaderPrinter.HeaderPrint(" -- Philip Pittle philip.pittle@gmail.com", HeaderPrinter.Style.Left));
+            System.Console.WriteLine(HeaderPrinter.Stars);
 
             System.Console.WriteLine();
             System.Console.WriteLine();
@@ -37,12 +38,16 @@ namespace AppInternalsDotNetSampler.Console
 
             while (true)
             {
-                NavigateToCategories();
+                NavigateTopCategories();
             }
         }
 
-        private static void NavigateToCategories()
+        private static void NavigateTopCategories()
         {
+            System.Console.WriteLine();
+            System.Console.WriteLine(HeaderPrinter.Stars);
+            System.Console.WriteLine(HeaderPrinter.HeaderPrint("CATEGORIES", HeaderPrinter.Style.CenterCaps));
+            System.Console.WriteLine(HeaderPrinter.Stars);
             System.Console.WriteLine();
 
             var cats = Enum.GetNames(typeof (SamplerMethodCategories));
@@ -76,6 +81,12 @@ namespace AppInternalsDotNetSampler.Console
 
         private static void NavigateToCategory(SamplerMethodCategories cat)
         {
+            System.Console.WriteLine();
+            System.Console.WriteLine(HeaderPrinter.Stars);
+            System.Console.WriteLine(HeaderPrinter.HeaderPrint(Enum.GetName(typeof (SamplerMethodCategories), cat), HeaderPrinter.Style.CenterCaps));
+            System.Console.WriteLine(HeaderPrinter.Stars);
+            System.Console.WriteLine();
+
             var catMethods = _methods.Where(m => m.Category == cat).ToArray();
 
             if (!catMethods.Any())
@@ -120,6 +131,12 @@ namespace AppInternalsDotNetSampler.Console
 
         private static void NavigateToMethod(ISamplerMethod method)
         {
+            System.Console.WriteLine();
+            System.Console.WriteLine(HeaderPrinter.Stars);
+            System.Console.WriteLine(HeaderPrinter.HeaderPrint(method.MethodName, HeaderPrinter.Style.CenterCaps));
+            System.Console.WriteLine(HeaderPrinter.Stars);
+            System.Console.WriteLine();
+
             var @params = method.Parameters;
 
             #region Get Paramters from User
@@ -210,5 +227,7 @@ namespace AppInternalsDotNetSampler.Console
                 .Execute(methodName, @params);
             System.Console.WriteLine();
         }
+
+        
     }
 }

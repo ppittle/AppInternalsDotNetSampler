@@ -1,4 +1,5 @@
-﻿using AppInternalsDotNetSampler.Core.Logging;
+﻿using AppInternalsDotNetSampler.Core.Console;
+using AppInternalsDotNetSampler.Core.Logging;
 
 namespace AppInternalsDotNetSampler.Console
 {
@@ -19,7 +20,7 @@ namespace AppInternalsDotNetSampler.Console
         public void WriteMethodEnd(string s)
         {
             System.Console.WriteLine(s);
-            System.Console.WriteLine("**************************************");
+            System.Console.WriteLine(HeaderPrinter.Stars);
         }
 
         public void WriteError(string s)
