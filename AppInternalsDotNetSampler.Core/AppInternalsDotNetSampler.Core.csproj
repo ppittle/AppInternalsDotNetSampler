@@ -39,16 +39,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Allocator.cs" />
-    <Compile Include="BurnCpuByCounting.cs" />
-    <Compile Include="DiskIO.cs" />
+    <Compile Include="SamplerMethods\CPU\SumArray.cs" />
+    <Compile Include="SamplerMethods\DiskIO\TempFileCreator.cs" />
+    <Compile Include="SamplerMethods\DiskIO\WriteAndRead.cs" />
+    <Compile Include="SamplerMethods\DiskIO\WriteAndReadAsync.cs" />
+    <Compile Include="SamplerMethods\Memory\ArrayOfFloats.cs" />
+    <Compile Include="SamplerMethods\Memory\ListOfDummyObjectGraphs.cs" />
+    <Compile Include="Discoverability\SamplerMethodCategories.cs" />
+    <Compile Include="Discoverability\SamplerMethodDiscoverer.cs" />
+    <Compile Include="Discoverability\SamplerMethodParameter.cs" />
+    <Compile Include="Discoverability\SamplerMethod.cs" />
     <Compile Include="Logging\ITcpServerLogger.cs" />
-    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Logging\IMethodLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TcpClient.cs" />
+    <Compile Include="SamplerMethodExecutor.cs" />
+    <Compile Include="SamplerMethods\Memory\ArrayOfDummyObjectGraphs.cs" />
+    <Compile Include="SamplerMethods\Memory\DummyObject.cs" />
+    <Compile Include="SamplerMethods\Memory\RunGarbageCollector.cs" />
+    <Compile Include="SamplerMethods\Networking\TcpClient.cs" />
+    <Compile Include="SamplerMethods\Networking\WebRequest.cs" />
+    <Compile Include="SamplerMethods\Networking\WebRequestAsync.cs" />
+    <Compile Include="SamplerMethods\Networking\WebRequestMultiThreaded.cs" />
     <Compile Include="TcpServer.cs" />
-    <Compile Include="WebRequestor.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
